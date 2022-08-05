@@ -56,7 +56,7 @@ pub unsafe trait IsDeepMaybeUninit: Sized {
             unsafe { Box::<Self>::from_raw(::core::ptr::NonNull::dangling().as_ptr()) }
         } else {
             unsafe {
-                let mem = ::alloc::alloc::alloc_zeroed(layout).cast::<Self>();
+                let mem = ::alloc::alloc::alloc(layout).cast::<Self>();
                 Box::from_raw(mem)
             }
         }
